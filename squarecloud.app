@@ -1,0 +1,6 @@
+DISPLAY_NAME=SenzBot
+DESCRIPTION=Senz, Bot do Discord
+MAIN=main.py
+MEMORY=1000
+VERSION=recommended
+AUTORESTART=true
