@@ -48,14 +48,22 @@ class Rank(commands.Cog):
             global xps
             xps = load_xps()
             rank = sorted(xps.items(), key=lambda item: item[1], reverse=True)
+            if categoria.value == 1:
+                emj = famaemoji
+                c = '#FF00F7'
+                rk = 'FAMA'
+            else:
+                emj = xpemoji
+                c = '#E67E22'
+                rk = 'XP'
 
-        embed = discord.Embed(title=f'🏆 Rank de {'Fama' if categoria.value == 1 else 'XP'}', color=discord.Color.from_str('#FF00F7' if  categoria.value == 1 else '#E67E22'))
+        embed = discord.Embed(title=f'🏆 Rank de {rk}', color=discord.Color.from_str(c))
 
         for i, (user, value) in enumerate(rank[:10], start=1):
             userrank = await self.bot.fetch_user(user)
             embed.add_field(
                 name='',
-                value=f"🏅`#{i}` - {famaemoji if categoria.value == 1 else xpemoji}`{value}` {userrank.display_name}",
+                value=f"🏅`#{i}` - {emj}`{value}` {userrank.display_name}",
                 inline=False
             )
         
