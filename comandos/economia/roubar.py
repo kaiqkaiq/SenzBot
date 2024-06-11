@@ -41,7 +41,7 @@ class Roubar(commands.Cog):
         self.bot = bot
         super().__init__()
 
-    @app_commands.command(name="ec-roubar", description="💵 Economia | Roube dinheiro (e XP) de alguém")
+    @app_commands.command(name="roubar", description="💵 Economia | Roube dinheiro (e XP) de alguém")
     @app_commands.describe(usuario='O usuário que você vai (tentar) roubar')
     async def Roubar(self, sc: discord.Interaction, usuario: discord.User):
         saldos = load_saldos()
@@ -106,7 +106,7 @@ class Roubar(commands.Cog):
                     title=f'{moneybag} Roubo', 
                     description=f'''
 **{vmark} {sc.user.mention} {r} `${rbd}` de {usuario.mention}**
->>> \- {xpemoji}`{xpg}` XP para {usuario.display_name}
+>>> - {xpemoji}`{xpg}` XP para {usuario.display_name}
 + {xpemoji}`{xpg}` XP para {sc.user.display_name}
 ''', 
                     color=discord.Color.yellow())  

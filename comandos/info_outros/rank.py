@@ -43,19 +43,19 @@ class Rank(commands.Cog):
         if categoria.value == 1:
             global famas
             famas = load_famas()
-            rank = sorted(famas.items(), key=lambda item: item[1], reverse=True)
+            rank = sorted(famas.items(), key=lambda item: item, reverse=True)
         else:
             global xps
             xps = load_xps()
             rank = sorted(xps.items(), key=lambda item: item[1], reverse=True)
-            if categoria.value == 1:
-                emj = famaemoji
-                c = '#FF00F7'
-                rk = 'FAMA'
-            else:
-                emj = xpemoji
-                c = '#E67E22'
-                rk = 'XP'
+        if categoria.value == 1:
+            emj = famaemoji
+            c = '#FF00F7'
+            rk = 'FAMA'
+        else:
+            emj = xpemoji
+            c = '#E67E22'
+            rk = 'XP'
 
         embed = discord.Embed(title=f'🏆 Rank de {rk}', color=discord.Color.from_str(c))
 

@@ -69,12 +69,12 @@ class Darfama(commands.Cog):
             famas[user_id] = 0
             save_famas(famas)
         if autor_id not in xps:
-            xps[autor_id] = [0]
+            xps[autor_id] = 0
             save_xps(xps)
         
         xpganho = random.randint(3, 7)
         famaganha = random.randint(1, 3)
-        famas[user_id][0] += famaganha
+        famas[user_id] += famaganha
         save_famas(famas)
         xps[user_id]  += xpganho
         xps[autor_id]  += xpganho 

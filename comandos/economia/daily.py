@@ -36,7 +36,7 @@ class Daily(commands.Cog):
         self.bot = bot
         super().__init__()
 
-    @app_commands.command(name="ec-daily", description="💵 Economia | Resgate seu prêmio diário")
+    @app_commands.command(name="daily", description="💵 Economia | Resgate seu prêmio diário")
     async def daily(self, sc: discord.Interaction):
         saldos = load_saldos()
         global xps

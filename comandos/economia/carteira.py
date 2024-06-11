@@ -23,7 +23,7 @@ class Carteira(commands.Cog):
         self.bot = bot
         super().__init__()
 
-    @app_commands.command(name="ec-carteira", description="💵 Economia | Veja seu saldo")
+    @app_commands.command(name="carteira", description="💵 Economia | Veja seu saldo")
     async def carteira(self, sc: discord.Interaction):
         saldos = load_saldos()
 

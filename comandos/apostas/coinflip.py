@@ -35,7 +35,7 @@ class Coinflip(commands.Cog):
         self.bot = bot
         super().__init__()
 
-    @app_commands.command(name="bet-coinflip", description="🎰 Apostas | Jogue cara ou coroa")
+    @app_commands.command(name="coinflip", description="🎰 Apostas | Jogue cara ou coroa")
     @app_commands.describe(valor="O valor a ser apostado", escolha="Sua aposta",)
     @app_commands.choices(escolha=[
         app_commands.Choice(name='Cara', value='cara'),

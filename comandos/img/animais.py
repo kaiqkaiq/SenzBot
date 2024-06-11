@@ -4,7 +4,7 @@ from discord.ext import commands
 import random
 import os
 
-class animais(commands.Cog):
+class animais(commands.GroupCog):
     def __init__(self, bot):
         self.bot = bot
         super().__init__()
@@ -93,20 +93,27 @@ class animais(commands.Cog):
     @app_commands.command(name="ratos", description="📷 Imagens | Imagens de ratos")
     async def rato(self, sc: discord.Interaction):
         pasta = './comandos/img/Imagens/ratos/'
-        image_files = [f for f in os.listdir(pasta) if f.endswith('.jpg')]
+        image_files = [f for f in os.listdir(pasta) if f.endswith(('.jpg', '.gif', '.webp'))]
         if not image_files:
             await sc.response.send_message('🚫 | Não foi encontrado ratos no sistema, talvez seja um erro, ou realmente não há nenhuma... Ficou sem ratos!')
             return
 
         imagemaleatoria = random.choice(image_files)
+        if imagemaleatoria.endswith('.jpg'):
+            extensao = '.jpg'
+        if imagemaleatoria.endswith('.gif'):
+            extensao = '.gif'
+        if imagemaleatoria.endswith('.webp'):
+            extensao = '.webp'
+            
         imagem = os.path.join(pasta, imagemaleatoria)
 
         embed = discord.Embed(
             title=f"🐀 | {random.choice(['Já viu o rato diário?', 'Ama ratos?', 'Seu rato está servido', 'Um ratão aí, só pra descontrair'])}",
             color=discord.Color.from_rgb(165, 76, 254)
         )
-        file = discord.File(imagem, filename="image.jpg")
-        embed.set_image(url=f"attachment://image.jpg")
+        file = discord.File(imagem, filename=f"image{extensao}")
+        embed.set_image(url=f"attachment://image{extensao}")
 
         await sc.response.send_message(file=file, embed=embed)
 

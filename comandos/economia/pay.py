@@ -22,7 +22,7 @@ class Pay(commands.Cog):
         self.bot = bot
         super().__init__()
 
-    @app_commands.command(name="ec-transferir", description="💵 Economia | Transfira dinheiro à alguém")
+    @app_commands.command(name="transferir", description="💵 Economia | Transfira dinheiro à alguém")
     @app_commands.describe(valor="O valor a ser depositado", usuario='O usuário a transferir')
     async def pay(self, sc: discord.Interaction, valor: int, usuario: discord.User):
         saldos = load_saldos()
