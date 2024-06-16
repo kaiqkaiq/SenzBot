@@ -32,7 +32,7 @@ cooldowns = {}
 
 coin = '<a:coin:1246247032734220318>'
 
-class bico(commands.Cog):
+class Bico(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         super().__init__()
@@ -88,4 +88,4 @@ Você {random.choice(bicos)} e ganhou `${bico}`
     
 
 async def setup(bot):
-    await bot.add_cog(bico(bot))
+    await bot.add_cog(Bico(bot))
