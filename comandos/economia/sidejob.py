@@ -32,13 +32,13 @@ cooldowns = {}
 
 coin = '<a:coin:1246247032734220318>'
 
-class Bico(commands.Cog):
+class Sidejob(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         super().__init__()
 
     @app_commands.command(name="bico", description="💵 Economia | Faça um bico para ganhar dinheiro rapído")
-    async def bico(self, sc: discord.Interaction ):
+    async def sidejob(self, sc: discord.Interaction ):
         user_id = str(sc.user.id)
         saldos = load_saldos()
         xps = load_xps()
@@ -88,4 +88,4 @@ Você {random.choice(bicos)} e ganhou `${bico}`
     
 
 async def setup(bot):
-    await bot.add_cog(Bico(bot))
+    await bot.add_cog(Sidejob(bot))
