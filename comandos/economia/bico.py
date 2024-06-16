@@ -65,8 +65,8 @@ class Sidejob(commands.Cog):
                 'foi patrocinado misteriosamente',
                 'lavou louça em um bar',
                 'foi assasino de aluguel',
-                'abriu comissões de desenho'
-                'foi babá'
+                'abriu comissões de desenho',
+                'foi babá',
                 'fez um bolo encomendado',
                 'revendeu produtos na shopee']
         embed = discord.Embed(

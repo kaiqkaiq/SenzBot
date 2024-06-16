@@ -87,7 +87,7 @@ class Roubar(commands.Cog):
         xpg = random.randint(6, 10)
         rbd = random.randint(150, 250)
 
-        if random.randint(1, 2) == 1:
+        if random.randint(1, 3) == 1 or 2:
 
             saldos[user_id][0] += rbd
             saldos[mentioned_id][0]  -= rbd
@@ -106,7 +106,7 @@ class Roubar(commands.Cog):
                     title=f'{moneybag} Roubo', 
                     description=f'''
 **{vmark} {sc.user.mention} {r} `${rbd}` de {usuario.mention}**
->>> - {xpemoji}`{xpg}` XP para {usuario.display_name}
+>>> \\- {xpemoji}`{xpg}` XP para {usuario.display_name}
 + {xpemoji}`{xpg}` XP para {sc.user.display_name}
 ''', 
                     color=discord.Color.yellow())  
