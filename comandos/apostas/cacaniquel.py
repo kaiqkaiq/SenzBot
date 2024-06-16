@@ -160,7 +160,7 @@ class cacaniquel(commands.Cog):
         if valor > 15000:
             await sc.response.send_message('❗ | Calma aí parça, isso tudo? Aposta um pouco menos', ephemeral=True)
             return
-        if self.valor <= 3:
+        if valor <= 3:
             await sc.response.send_message(f'❗ | O valor precisa ser maior que três', ephemeral=True)
             return
         user_id = str(sc.user.id)
