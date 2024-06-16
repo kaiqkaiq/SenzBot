@@ -48,7 +48,7 @@ class Sidejob(commands.Cog):
             await sc.response.send_message(f"⏰ | Você pode fazer um bico de novo em {int((cooldowns[user_id] + cooldown_time - time.time()) / 60)} minutos.", ephemeral=True)
             return
         
-        bico = random.randint(25, 50)
+        sidejob = random.randint(25, 50)
         xpganho = random.randint(1, 3)
         if user_id not in xps:
             xps[user_id] = 0
@@ -65,22 +65,21 @@ class Sidejob(commands.Cog):
                 'foi patrocinado misteriosamente',
                 'lavou louça em um bar',
                 'foi assasino de aluguel',
-                'abriu comissões de desenho',
-                'foi babá',
+                'abriu comissões de desenho'
+                'foi babá'
                 'fez um bolo encomendado',
-                'revendeu produtos na shopee',
-                'passeou com o cachorro do vizinho']
+                'revendeu produtos na shopee']
         embed = discord.Embed(
                 title=f'{coin} Bico', 
                 description=f'''
-Você {random.choice(bicos)} e ganhou `${bico}`
+Você {random.choice(bicos)} e ganhou `${sidejob}`
                 ''', 
                 color=discord.Color.yellow())
         embed.set_footer(text=f'+ {xpganho} XP')  
         
         if user_id not in saldos:
             saldos[user_id] = [0, 0,]
-        saldos[user_id][0] += bico
+        saldos[user_id][0] += sidejob
         save_saldos(saldos)  
         await sc.response.send_message(embed=embed)
         cooldowns[user_id] = time.time()
