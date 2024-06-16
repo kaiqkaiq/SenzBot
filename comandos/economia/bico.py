@@ -32,13 +32,13 @@ cooldowns = {}
 
 coin = '<a:coin:1246247032734220318>'
 
-class Sidejob(commands.Cog):
+class bico(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         super().__init__()
 
     @app_commands.command(name="bico", description="💵 Economia | Faça um bico para ganhar dinheiro rapído")
-    async def sidejob(self, sc: discord.Interaction ):
+    async def bico(self, sc: discord.Interaction ):
         user_id = str(sc.user.id)
         saldos = load_saldos()
         xps = load_xps()
@@ -48,7 +48,7 @@ class Sidejob(commands.Cog):
             await sc.response.send_message(f"⏰ | Você pode fazer um bico de novo em {int((cooldowns[user_id] + cooldown_time - time.time()) / 60)} minutos.", ephemeral=True)
             return
         
-        sidejob = random.randint(25, 50)
+        bico = random.randint(25, 50)
         xpganho = random.randint(1, 3)
         if user_id not in xps:
             xps[user_id] = 0
@@ -65,21 +65,22 @@ class Sidejob(commands.Cog):
                 'foi patrocinado misteriosamente',
                 'lavou louça em um bar',
                 'foi assasino de aluguel',
-                'abriu comissões de desenho'
-                'foi babá'
+                'abriu comissões de desenho',
+                'foi babá',
                 'fez um bolo encomendado',
-                'revendeu produtos na shopee']
+                'revendeu produtos na shopee',
+                'passeou com o cachorro do vizinho']
         embed = discord.Embed(
                 title=f'{coin} Bico', 
                 description=f'''
-Você {random.choice(bicos)} e ganhou `${sidejob}`
+Você {random.choice(bicos)} e ganhou `${bico}`
                 ''', 
                 color=discord.Color.yellow())
         embed.set_footer(text=f'+ {xpganho} XP')  
         
         if user_id not in saldos:
             saldos[user_id] = [0, 0,]
-        saldos[user_id][0] += sidejob
+        saldos[user_id][0] += bico
         save_saldos(saldos)  
         await sc.response.send_message(embed=embed)
         cooldowns[user_id] = time.time()
@@ -87,4 +88,4 @@ Você {random.choice(bicos)} e ganhou `${sidejob}`
     
 
 async def setup(bot):
-    await bot.add_cog(Sidejob(bot))
+    await bot.add_cog(bico(bot))

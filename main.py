@@ -43,7 +43,7 @@ async def on_ready():
     print('📁 Cogs carregados')
     sincs = await bot.tree.sync()
     print(f"📶 | {len(sincs)} SlashCommands sincronizados")
-    await bot.change_presence(activity=discord.Game(name=f"/img-aguaviva"))
+    await bot.change_presence(activity=discord.Game(name=f"/daily"))
     print(f'💚 | {bot.user} Ligado e Online')
 
 @bot.event
@@ -52,30 +52,6 @@ async def on_message(message):
     if message.author == bot.user:
         return
     
-@bot.command()
-async def botinfo(ctx:commands.Context):
-    if ctx.author.id != 835572752068771860:
-        return
-        
-    ping = bot.latency * 1000
 
-    guilds = []
-    servers = bot.guilds
-
-    for guild in servers:
-        guilds = guilds + [guild.name]
-
-    embed = discord.Embed(
-        title='📄 Informações do Bot',
-        description=f'''
-**{bot.user}** `{bot.user.id}`
-
-**Ping** {ping:.2f}
-**Usuários totais** {sum(guild.member_count for guild in bot.guilds)}
-**Servidores** ({len(bot.guilds)})
-{guilds}
-''',
-        color=discord.Color.from_rgb(r=171, g=255, b=0))
-    await ctx.reply(embed=embed)
 
 bot.run(token)

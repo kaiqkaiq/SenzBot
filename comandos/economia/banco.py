@@ -17,6 +17,8 @@ def save_saldos(saldos):
 
 cooldowns = {}
 
+carteiraemoji = '<:carteira:1246247426449473546>'
+
 class banco(commands.GroupCog):
     def __init__(self, bot):
         self.bot = bot
@@ -59,7 +61,7 @@ Você depositou `${valor - taxa}` em seu banco
         cooldowns[user_id] = time.time()
 
 
-    @app_commands.command(name="sacar", description="💵 Economia | saque dinheiro do banco")
+    @app_commands.command(name="sacar", description="💵 Economia | Saque dinheiro do banco")
     @app_commands.describe(valor="O valor a ser retirado")
     async def saque(self, sc: discord.Interaction, valor: int):
         saldos = load_saldos()
@@ -83,6 +85,22 @@ Você depositou `${valor - taxa}` em seu banco
                 description=f'Você retirou `${valor}` de seu banco.', 
                 color=discord.Color.og_blurple())  
         await sc.response.send_message(embed=embed)
+
+
+    @app_commands.command(name="saldo", description="💵 Economia | Veja seu saldo")
+    async def carteira(self, sc: discord.Interaction):
+        saldos = load_saldos()
+        user_id = str(sc.user.id)
+
+        if user_id not in saldos:
+            saldos[user_id] = [0, 0,]
+            save_saldos(saldos)
+        embed = discord.Embed(
+                title=f'✉️ Seu saldo', 
+                color=0x4e0fb2)
+        embed.add_field(name=f'{carteiraemoji} Carteira', value=f'```\n${saldos[user_id][0]}```')
+        embed.add_field(name=f'🏦 Banco', value=f'```\n${saldos[user_id][1]}```')
+        await sc.response.send_message(embed=embed, ephemeral=True)
 
 
 async def setup(bot):

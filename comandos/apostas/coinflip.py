@@ -65,21 +65,21 @@ class Coinflip(commands.Cog):
         if result == escolha.value:
             xps[user_id] += xpganho
             save_xps(xps)
-            saldos[user_id][0] += int(valor*0.6)
+            saldos[user_id][0] += int(valor*0.7)
             save_saldos(saldos)  
 
             embed = discord.Embed(
                     title='🪙 Cara ou coroa', 
                     description=f'''
-*Você escolheu {escolha.value} e jogou a moeda...*
+*Você apostou `${valor}`, escolheu {escolha.value} e jogou a moeda...*
 
 Caiu **{result}**! você ganhou `${int(valor*0.7)}`
                     ''', 
-                    color=discord.Color.from_rgb(r=171, g=255, b=0)) 
+                    color=0x25c004) 
             embed.set_footer(text=f'+ {xpganho} XP')
             await sc.response.send_message(embed=embed)
         else:
-            xps[user_id] -= xpganho
+            xps[user_id] -= int(xpganho / 1.5)
             save_xps(xps)
             saldos[user_id][0] -= valor
             save_saldos(saldos)  
@@ -87,11 +87,11 @@ Caiu **{result}**! você ganhou `${int(valor*0.7)}`
             embed = discord.Embed(
                     title='🪙 Cara ou coroa', 
                     description=f'''
-                    *Você escolheu {escolha.value} e jogou a moeda...*
+*Você apostou `${valor}`, escolheu {escolha.value} e jogou a moeda...*
 
-                    Caiu **{result}**! mais sorte na próxima vez
+Caiu **{result}**! mais sorte na próxima vez
                     ''', 
-                    color=discord.Color.from_rgb(r=171, g=255, b=0))  
+                    color=discord.Color.red())  
             embed.set_footer(text=f'- {xpganho} XP')
             await sc.response.send_message(embed=embed)
             

@@ -43,7 +43,7 @@ class Rank(commands.Cog):
         if categoria.value == 1:
             global famas
             famas = load_famas()
-            rank = sorted(famas.items(), key=lambda item: item, reverse=True)
+            rank = sorted(famas.items(), key=lambda item: item[1], reverse=True)
         else:
             global xps
             xps = load_xps()
